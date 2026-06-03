@@ -28,7 +28,9 @@ On each push, Actions runs:
 
 ### One-time GitHub setup
 
-1. Create repo **FutureSports** on the Zizuar GitHub account.
+Local git is ready (`main` + `staging`). Finish remote setup: **[docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md)** (`gh auth login` → create repo → push).
+
+1. Create repo **FutureSports** on the Zizuar GitHub account (or use `gh repo create` from the doc).
 2. Add repository secrets:
    - `CLOUDFLARE_API_TOKEN`
    - `CLOUDFLARE_ACCOUNT_ID`
