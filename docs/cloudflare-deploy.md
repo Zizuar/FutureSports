@@ -1,57 +1,32 @@
 # Cloudflare deployment — FutureSports
 
-Deployments are **CI-only** via GitHub Actions. Do not rely on local `npm install` or `wrangler deploy` for routine releases.
+**Primary:** [Cloudflare Workers Builds](cloudflare-workers-builds.md) with **GitHub OAuth** (same pattern as tlm-app). Cloudflare runs `npm run build:cf` and `wrangler deploy` when you push.
+
+**Secondary:** GitHub Actions workflow **Verify Cloudflare build** — compile check only; no Cloudflare API token in GitHub.
 
 ## Environments
 
-| Branch | Worker env | URL |
-|--------|------------|-----|
+| Git branch | Wrangler env | URL |
+|------------|--------------|-----|
 | `staging` | `staging` | https://test.fso.gg |
-| `main` | `production` | https://fso.gg, https://www.fso.gg |
+| `main` | `production` | https://fso.gg · https://www.fso.gg |
 
-## GitHub Actions
+## One-time dashboard setup
 
-Workflow: `.github/workflows/deploy.yml`
+Follow **[cloudflare-workers-builds.md](cloudflare-workers-builds.md)** to connect `Zizuar/FutureSports` and set build/deploy commands.
 
-**Triggers:** push to `staging` or `main`; optional manual `workflow_dispatch` (staging or production).
-
-**Steps:**
-
-1. Checkout
-2. `npm ci`
-3. `npm run sync:assets`
-4. `npm run build:cf`
-5. `wrangler deploy --env <staging|production>`
-
-### Repository secrets (required)
-
-| Secret | Purpose |
-|--------|---------|
-| `CLOUDFLARE_API_TOKEN` | Deploy Workers + routes on zone `fso.gg` |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account |
-
-## Image assets
-
-Add or change files under `ImageAssetts/`, commit, and push. CI copies them into `public/image-assets/` before build. That folder is gitignored so binaries are not duplicated in git—only the source tree in `ImageAssetts/` is versioned.
+You do **not** need GitHub repository secrets for OAuth-based Workers Builds.
 
 ## Migrating from fsotemp
 
-1. Push `staging` and verify https://test.fso.gg
-2. Merge to `main` and verify https://fso.gg
-3. Confirm wrangler routes on the new Worker (`futuresports` / `futuresports-staging`)
-4. Disable legacy `fsotemp` Worker routes when satisfied
+1. Connect FutureSports in Workers Builds; deploy `staging` → verify test.fso.gg
+2. Deploy `main` → verify fso.gg
+3. Remove routes from legacy **fsotemp** Worker
 
-## Worker secrets (Cloudflare dashboard)
+## Worker secrets
 
-Set per environment when integrating Twitch/YouTube. `keep_vars: true` in `wrangler.jsonc` keeps dashboard-only values across deploys.
-
-- `TWITCH_CLIENT_ID` / `TWITCH_CLIENT_SECRET` (can mirror tlm-app initially)
-- YouTube API credentials as used in tlm-app proxy routes
+Set in Cloudflare dashboard per environment (see tlm-app `docs/cloudflare-env.md`). `keep_vars: true` in `wrangler.jsonc` preserves dashboard plaintext vars across deploys.
 
 ## Cloudflare Access
 
-Review Zero Trust policies for `fso.gg` and `test.fso.gg` in the dashboard. Staging may stay team-only via Access on `test.fso.gg`.
-
-## Emergency manual deploy
-
-Only if Actions is unavailable: run the same commands as the workflow on a machine with Node 20+ and Wrangler auth. Not the normal workflow.
+Review Zero Trust for `fso.gg` / `test.fso.gg` if staging should be team-only.

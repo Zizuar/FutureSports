@@ -34,21 +34,20 @@ If the repo name is taken, use another name and update the remote:
 gh repo create YourRepoName --public --source=. --remote=origin
 ```
 
-## 3. GitHub Actions secrets
+## 3. Cloudflare deploy (OAuth — not GitHub secrets)
 
-In the repo: **Settings → Secrets and variables → Actions → New repository secret**
+Deploy uses **Cloudflare Workers Builds** with your existing GitHub ↔ Cloudflare OAuth connection (same idea as tlm-app). See **[cloudflare-workers-builds.md](cloudflare-workers-builds.md)**.
 
-| Name | Value |
-|------|--------|
-| `CLOUDFLARE_API_TOKEN` | Cloudflare API token with Workers deploy + Zone read for `fso.gg` |
-| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID |
+You do **not** need `CLOUDFLARE_API_TOKEN` in GitHub unless you switch back to Actions-based deploy.
 
 ## 4. First deploy
 
-- Push or merge to **`staging`** → deploys to https://test.fso.gg  
-- Push or merge to **`main`** → deploys to https://fso.gg  
+1. Connect **Zizuar/FutureSports** in the Cloudflare dashboard (Workers Builds).
+2. Push **`staging`** → https://test.fso.gg  
+3. Merge to **`main`** → https://fso.gg  
 
-Watch progress under **Actions** in the GitHub repo.
+Build logs: Cloudflare dashboard → Worker → **Deployments**.  
+GitHub **Actions** only runs a compile check (`build-verify.yml`).
 
 ## Branches
 
