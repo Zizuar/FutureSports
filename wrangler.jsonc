@@ -22,7 +22,7 @@
   },
   "env": {
     "staging": {
-      "name": "futuresports-staging",
+      "name": "futuresports-testsite",
       "vars": {
         "NEXT_PUBLIC_SITE_URL": "https://test.fso.gg"
       },
