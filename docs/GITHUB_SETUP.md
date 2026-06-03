@@ -2,7 +2,13 @@
 
 Local git is initialized with **`main`** and **`staging`** branches and an initial commit.
 
-`gh` (GitHub CLI) was installed on this machine but **is not authenticated yet**. Complete these steps once in a terminal.
+`gh` is installed at `C:\Program Files\GitHub CLI\gh.exe` and has been added to your **user** PATH. **Open a new terminal** (or restart Cursor) so `gh` is recognized—existing windows keep the old PATH.
+
+If `gh` still is not found:
+
+```powershell
+& "C:\Program Files\GitHub CLI\gh.exe" auth login
+```
 
 ## 1. Log in to GitHub (Zizuar account)
 
