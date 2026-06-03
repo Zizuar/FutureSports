@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PageIntro from '@/components/content/PageIntro';
 import BrandImage from '@/components/media/BrandImage';
 import PageBanner from '@/components/media/PageBanner';
+import SealWatermark from '@/components/media/SealWatermark';
 import { brandAssets } from '@/config/brandAssets';
 import { fsoPrograms, vrLeagues } from '@/data/games';
 
@@ -23,6 +24,12 @@ export default function GamesPage() {
         title="Games & VR Leagues"
         lead="FSO organizes and supports competitive VR leagues—paintball, laser tag, and partner circuits—plus the media that brings them to fans."
       >
+        <div className="flex items-center gap-4 mb-8 not-prose">
+          <SealWatermark size={72} />
+          <p className="text-sm text-[var(--fso-text-muted)] max-w-md">
+            Official FSO Seal — used for VR esports, tournaments, and league operations.
+          </p>
+        </div>
         <div className="space-y-8 not-prose max-w-4xl">
           {vrLeagues.map((league) => (
             <article

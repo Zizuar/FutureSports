@@ -1,18 +1,58 @@
 @import 'tailwindcss';
 
-:root {
-  --fso-maroon: #6b1a2a;
-  --fso-maroon-dark: #4a1018;
+/* Official — maroon / white / grey */
+:root,
+.fso-theme-official {
+  --fso-primary: #6b1a2a;
+  --fso-primary-dark: #4a1018;
+  --fso-split-a: #6b1a2a;
+  --fso-split-b: #2a2a2e;
   --fso-charcoal: #2a2a2e;
   --fso-charcoal-deep: #141416;
   --fso-accent: #c9a227;
   --fso-text: #e8e6e3;
   --fso-text-muted: #a8a6a3;
+  --fso-glow: rgba(107, 26, 42, 0.15);
   --sidebar-width: 260px;
+  /* legacy aliases */
+  --fso-maroon: var(--fso-primary);
+  --fso-maroon-dark: var(--fso-primary-dark);
+}
+
+/* Casual — sea-green / silver / black (Asset 6 family) */
+.fso-theme-casual {
+  --fso-primary: #1e6b5c;
+  --fso-primary-dark: #0f3d36;
+  --fso-split-a: #2a8f7e;
+  --fso-split-b: #1c2226;
+  --fso-charcoal: #1c2226;
+  --fso-charcoal-deep: #0d1012;
+  --fso-accent: #b8c5ce;
+  --fso-text: #e8ecef;
+  --fso-text-muted: #8a9aa6;
+  --fso-glow: rgba(42, 143, 126, 0.18);
+  --fso-maroon: var(--fso-primary);
+  --fso-maroon-dark: var(--fso-primary-dark);
+}
+
+/* Premium banners (fsogg space) — neutral chrome, less maroon bleed */
+.fso-theme-premium {
+  --fso-primary: #3a3f4a;
+  --fso-primary-dark: #1a1d22;
+  --fso-split-a: #2d3548;
+  --fso-split-b: #141820;
+  --fso-charcoal: #1a1f28;
+  --fso-charcoal-deep: #0a0c10;
+  --fso-accent: #9eb4d4;
+  --fso-text: #eef1f6;
+  --fso-text-muted: #9aa3b0;
+  --fso-glow: rgba(60, 80, 120, 0.12);
+  --fso-maroon: var(--fso-primary);
+  --fso-maroon-dark: var(--fso-primary-dark);
 }
 
 @theme inline {
-  --color-fso-maroon: var(--fso-maroon);
+  --color-fso-maroon: var(--fso-primary);
   --color-fso-charcoal: var(--fso-charcoal);
   --color-fso-accent: var(--fso-accent);
   --font-sans: var(--font-geist-sans);
@@ -30,14 +70,13 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-/* Diagonal split used in sidebar and header */
 .fso-diagonal-split {
   background: linear-gradient(
     135deg,
-    var(--fso-maroon) 0%,
-    var(--fso-maroon) 48%,
-    var(--fso-charcoal) 52%,
-    var(--fso-charcoal) 100%
+    var(--fso-split-a) 0%,
+    var(--fso-split-a) 48%,
+    var(--fso-split-b) 52%,
+    var(--fso-split-b) 100%
   );
 }
 
@@ -73,11 +112,12 @@ body {
 }
 
 .fso-card-accent {
-  box-shadow: inset 4px 0 0 var(--fso-maroon);
+  box-shadow: inset 4px 0 0 var(--fso-primary);
 }
 
-/* Main content pane — wireframe large display area */
-main .flex-1.overflow-auto {
-  background: radial-gradient(ellipse at 30% 0%, rgba(107, 26, 42, 0.15), transparent 50%),
+.fso-theme-official .flex-1.overflow-auto,
+.fso-theme-casual .flex-1.overflow-auto,
+.fso-theme-premium .flex-1.overflow-auto {
+  background: radial-gradient(ellipse at 30% 0%, var(--fso-glow), transparent 50%),
     var(--fso-charcoal-deep);
 }

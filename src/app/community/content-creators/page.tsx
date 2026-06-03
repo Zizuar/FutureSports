@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContentCreatorsPage() {
   return (
     <>
-      <PageBanner src={brandAssets.team.pride} alt="FSO creators" />
+      <PageBanner src={brandAssets.logos.casualAlt} alt="FSO creators" theme="casual" />
       <PageIntro
         title="Content Creators"
         lead="Casters, league operators, and partners who power FSOnet and FSO community channels."

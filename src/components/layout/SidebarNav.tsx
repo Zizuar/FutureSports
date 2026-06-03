@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { FaTwitch, FaYoutube, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { siteConfig } from '@/config/site';
 import { mainNavigation, sidebarSocialLinks, type NavItem } from '@/config/navigation';
+import type { SiteTheme } from '@/config/siteTheme';
 import BrandLogo from './BrandLogo';
 
 const socialIcons = {
@@ -52,12 +53,13 @@ function NavLink({
 }
 
 interface SidebarNavProps {
-  logoSrc: string | null;
+  logoSrc: string;
+  theme: SiteTheme;
   mobileOpen: boolean;
   onNavigate: () => void;
 }
 
-export default function SidebarNav({ logoSrc, mobileOpen, onNavigate }: SidebarNavProps) {
+export default function SidebarNav({ logoSrc, theme, mobileOpen, onNavigate }: SidebarNavProps) {
   const pathname = usePathname();
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
@@ -75,7 +77,13 @@ export default function SidebarNav({ logoSrc, mobileOpen, onNavigate }: SidebarN
     >
       <div className="p-4 border-b border-white/10">
         <Link href="/" className="block group" onClick={onNavigate}>
-          <BrandLogo src={logoSrc} size={72} className="w-full max-w-[200px] h-auto object-contain mx-auto" />
+          <BrandLogo
+            src={logoSrc}
+            size={72}
+            className={`w-full max-w-[200px] h-auto object-contain mx-auto ${
+              theme === 'casual' ? 'drop-shadow-[0_0_12px_rgba(42,143,126,0.35)]' : ''
+            }`}
+          />
           <p className="text-center text-[10px] uppercase tracking-[0.25em] text-white/60 mt-2 group-hover:text-[var(--fso-accent)] transition-colors">
             {siteConfig.tagline}
           </p>

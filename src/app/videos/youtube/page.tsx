@@ -11,7 +11,7 @@ export default function YouTubePage() {
   return (
     <PlaceholderMediaPage
       title="YouTube — @fsonetwork"
-      bannerSrc={brandAssets.legacy.fsogg1}
+      bannerSrc={brandAssets.hero.premium}
       summary="Channel banner, playlist picker, and featured videos (adapt tlm-app YouTube page layout)."
       externalUrl={siteConfig.urls.youtube}
       externalLabel="FSO Network on YouTube"

@@ -53,16 +53,14 @@ fs.rmSync(dest, { recursive: true, force: true });
 copyRecursive(source, dest);
 walkManifest('', dest);
 
-const preferredLogo = '/image-assets/CurrentLogos/FSOlogoReDo-Ver2.png';
-const logo = Object.values(manifest)
-  .flat()
-  .includes(preferredLogo)
-  ? preferredLogo
-  : manifest['CurrentLogos']?.find((p) => /FSOlogoReDo/i.test(p)) ??
-    manifest['CurrentLogos']?.find((p) => /fsogg/i.test(p)) ??
-    manifest['CurrentLogos']?.[0] ??
-    null;
+const primaryLogo = '/image-assets/CurrentLogos/Asset 2.png';
+const sealLogo = '/image-assets/CurrentLogos/FSOlogoReDo-Ver2.png';
+const all = Object.values(manifest).flat();
+const logo = all.includes(primaryLogo)
+  ? primaryLogo
+  : manifest['CurrentLogos']?.find((p) => /Asset 2/i.test(p)) ?? null;
+const seal = all.includes(sealLogo) ? sealLogo : null;
 
-const out = { categories: manifest, logo };
+const out = { categories: manifest, logo, seal };
 fs.writeFileSync(path.join(dest, 'manifest.json'), JSON.stringify(out, null, 2));
 console.log(`[sync:assets] Copied assets; manifest: ${Object.values(manifest).flat().length} images`);

@@ -1,20 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
 import SidebarNav from './SidebarNav';
 import SiteHeader from './SiteHeader';
+import { navLogoForTheme, resolveSiteTheme } from '@/config/siteTheme';
 
 interface SiteShellProps {
   children: React.ReactNode;
-  logoSrc: string | null;
 }
 
-export default function SiteShell({ children, logoSrc }: SiteShellProps) {
+export default function SiteShell({ children }: SiteShellProps) {
+  const pathname = usePathname();
+  const theme = resolveSiteTheme(pathname);
+  const logoSrc = navLogoForTheme(theme);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className={`flex min-h-screen fso-theme-${theme}`}>
       {mobileNavOpen && (
         <button
           type="button"
@@ -26,6 +29,7 @@ export default function SiteShell({ children, logoSrc }: SiteShellProps) {
 
       <SidebarNav
         logoSrc={logoSrc}
+        theme={theme}
         mobileOpen={mobileNavOpen}
         onNavigate={() => setMobileNavOpen(false)}
       />

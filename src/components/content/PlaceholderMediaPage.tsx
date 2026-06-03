@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageBanner from '@/components/media/PageBanner';
 import EmoteStrip from '@/components/media/EmoteStrip';
 import { brandAssets } from '@/config/brandAssets';
+import type { SiteTheme } from '@/config/siteTheme';
 
 interface PlaceholderMediaPageProps {
   title: string;
@@ -10,6 +11,7 @@ interface PlaceholderMediaPageProps {
   externalLabel?: string;
   plannedFeatures: string[];
   bannerSrc?: string;
+  bannerTheme?: SiteTheme;
   showEmotes?: boolean;
 }
 
@@ -19,12 +21,13 @@ export default function PlaceholderMediaPage({
   externalUrl,
   externalLabel,
   plannedFeatures,
-  bannerSrc = brandAssets.hero.banner,
+  bannerSrc = brandAssets.hero.broadcast,
+  bannerTheme = 'official',
   showEmotes = false,
 }: PlaceholderMediaPageProps) {
   return (
     <>
-      <PageBanner src={bannerSrc} alt={title} />
+      <PageBanner src={bannerSrc} alt={title} theme={bannerTheme} />
       {showEmotes && <EmoteStrip />}
       <div className="p-6 sm:p-8 max-w-3xl">
         <p className="text-xs uppercase tracking-widest text-[var(--fso-accent)] mb-2">Coming soon</p>

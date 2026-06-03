@@ -11,7 +11,7 @@ interface BrandLogoProps {
 }
 
 export default function BrandLogo({ src, size = 44, className }: BrandLogoProps) {
-  const logoPath = src ?? brandAssets.logos.primary;
+  const logoPath = src ?? brandAssets.logos.primary; // Asset 2.png
 
   return (
     <BrandImage

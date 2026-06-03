@@ -1,6 +1,13 @@
 /**
- * Curated FSO brand imagery from ImageAssetts/ (synced to /image-assets/ in CI).
- * Paths are intentional — not whatever sorts first in the folder.
+ * Curated FSO brand imagery — see ImageAssetts/CurrentLogos usage notes in repo docs.
+ *
+ * | Asset | Role |
+ * |-------|------|
+ * | Asset 2.png | Primary logo — nav, resize, co-brand watermark |
+ * | FSOlogoReDo-Ver2.png | Official FSO Seal — tournaments / VR esports, favicon |
+ * | Asset 6.png / Asset 6 (2).png | Casual palette (sea-green / silver / black) |
+ * | fsogg.png | Premium space banner — neutral backdrop |
+ * | white_NO background.png | Mark only (no wordmark) |
  */
 
 export function assetUrl(path: string): string {
@@ -8,16 +15,28 @@ export function assetUrl(path: string): string {
   return '/' + parts.map((seg) => encodeURIComponent(seg)).join('/');
 }
 
+const logos = {
+  /** Main logo — top-left nav, central branding, watermarks */
+  primary: '/image-assets/CurrentLogos/Asset 2.png',
+  /** FSO Seal — official VR esports / tournaments only */
+  seal: '/image-assets/CurrentLogos/FSOlogoReDo-Ver2.png',
+  /** Casual day-to-day / flat-screen (sea-green scheme) */
+  casual: '/image-assets/CurrentLogos/Asset 6.png',
+  casualAlt: '/image-assets/CurrentLogos/Asset 6 (2).png',
+  /** Premium banner — space backdrop, no maroon/green scheme */
+  bannerSpace: '/image-assets/CurrentLogos/fsogg.png',
+  /** Icon mark without FSO wordmark */
+  mark: '/image-assets/GeneralImages/white_NO background.png',
+  engage: '/image-assets/CurrentLogos/Engage8.png',
+  wide: '/image-assets/CurrentLogos/1500x500.png',
+} as const;
+
 export const brandAssets = {
-  logos: {
-    primary: '/image-assets/CurrentLogos/FSOlogoReDo-Ver2.png',
-    mark: '/image-assets/CurrentLogos/fsogg.png',
-    engage: '/image-assets/CurrentLogos/Engage8.png',
-    wide: '/image-assets/CurrentLogos/1500x500.png',
-    helmet: '/image-assets/GeneralImages/white_NO background.png',
-  },
+  logos,
   hero: {
-    banner: '/image-assets/LegacyImages/FSOvidBanner.png',
+    /** Premium-grade banner */
+    premium: logos.bannerSpace,
+    broadcast: '/image-assets/LegacyImages/FSOvidBanner.png',
     headset: '/image-assets/GeneralImages/GlowingHeadset.png',
     engageSquare: '/image-assets/GeneralImages/Engage-Squared-Enlarged.png',
     glass: '/image-assets/LegacyImages/fsoGlass.png',
@@ -50,10 +69,12 @@ export const brandAssets = {
   ],
   gallery: {
     logos: [
-      '/image-assets/CurrentLogos/FSOlogoReDo-Ver2.png',
-      '/image-assets/CurrentLogos/fsogg.png',
-      '/image-assets/CurrentLogos/Engage8.png',
-      '/image-assets/CurrentLogos/fso2.png',
+      logos.primary,
+      logos.seal,
+      logos.casual,
+      logos.casualAlt,
+      logos.bannerSpace,
+      logos.mark,
     ],
     general: [
       '/image-assets/GeneralImages/GlowingHeadset.png',
@@ -72,5 +93,4 @@ export const brandAssets = {
   },
 } as const;
 
-/** Sidebar / header logo */
-export const sidebarLogoSrc = brandAssets.logos.primary;
+export const faviconSrc = logos.seal;

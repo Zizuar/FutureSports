@@ -11,7 +11,7 @@ export default function TwitchPage() {
   return (
     <PlaceholderMediaPage
       title="Twitch — FSOnet"
-      bannerSrc={brandAssets.hero.glass}
+      bannerSrc={brandAssets.hero.broadcast}
       showEmotes
       summary="Live channel embed, VOD clips, schedule, and live-now banner (ported from tlm-app patterns)."
       externalUrl={siteConfig.urls.twitch}

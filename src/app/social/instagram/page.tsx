@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PlaceholderMediaPage from '@/components/content/PlaceholderMediaPage';
+import { brandAssets } from '@/config/brandAssets';
 
 export const metadata: Metadata = {
   title: 'Instagram',
@@ -9,6 +10,8 @@ export default function InstagramPage() {
   return (
     <PlaceholderMediaPage
       title="Instagram"
+      bannerSrc={brandAssets.logos.casualAlt}
+      bannerTheme="casual"
       summary="Instagram embed or static feed links—no API in v1; mirror tlm-app Instagram Live/VOD approach later if needed."
       plannedFeatures={[
         'Embed latest posts via Meta embed.js (public profile)',

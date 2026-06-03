@@ -20,7 +20,7 @@ export function HomeLeaguesPreview() {
       </div>
       <div className="relative p-8 sm:p-12">
         <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-          <BrandImage src={brandAssets.logos.mark} alt="" width={48} height={48} className="w-12 h-12 object-contain" />
+            <BrandImage src={brandAssets.logos.primary} alt="" width={48} height={48} className="w-12 h-12 object-contain" />
           VR Leagues
         </h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl">

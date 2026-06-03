@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PlaceholderMediaPage from '@/components/content/PlaceholderMediaPage';
+import { brandAssets } from '@/config/brandAssets';
 
 export const metadata: Metadata = {
   title: 'TikTok',
@@ -9,6 +10,8 @@ export default function TikTokPage() {
   return (
     <PlaceholderMediaPage
       title="TikTok"
+      bannerSrc={brandAssets.logos.casualAlt}
+      bannerTheme="casual"
       summary="No TikTok API at this stage—profile embed or curated link grid until tokens are configured."
       plannedFeatures={[
         'Official TikTok profile embed blockquote (no API key required)',

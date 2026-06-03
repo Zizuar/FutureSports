@@ -12,12 +12,17 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageBanner src={brandAssets.logos.wide} alt="Contact FSO" heightClass="h-36 sm:h-44" />
+      <PageBanner
+        src={brandAssets.hero.premium}
+        alt="Contact FSO"
+        heightClass="h-36 sm:h-44"
+        theme="premium"
+      />
       <PageIntro title="Contact Us" lead="Reach FSO through community channels and FSOnet.">
         <div className="flex flex-col md:flex-row gap-8 not-prose max-w-4xl items-start">
           <BrandImage
-            src={brandAssets.logos.helmet}
-            alt="FSO"
+            src={brandAssets.logos.mark}
+            alt="FSO mark"
             width={200}
             height={200}
             className="w-40 md:w-48 h-auto object-contain shrink-0"

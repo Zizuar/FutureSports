@@ -11,7 +11,11 @@ export const metadata: Metadata = {
 export default function PhotosPage() {
   return (
     <>
-      <PageBanner src={brandAssets.hero.banner} alt="FSO community and broadcasts" />
+      <PageBanner
+        src={brandAssets.logos.casualAlt}
+        alt="FSO community"
+        theme="casual"
+      />
       <PageIntro
         title="Community Photos"
         lead="Brand marks, league moments, and legacy FSO imagery from our asset library."

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageIntro from '@/components/content/PageIntro';
 import PageBanner from '@/components/media/PageBanner';
+import SealWatermark from '@/components/media/SealWatermark';
 import { brandAssets } from '@/config/brandAssets';
 import { featuredEvents } from '@/data/events';
 import { siteConfig } from '@/config/site';
@@ -17,6 +18,9 @@ export default function EventsPage() {
         title="Events"
         lead="Community nights, league seasons, and FSOnet live casts. Confirm dates in Discord—the schedule moves with the VR calendar."
       >
+        <div className="mb-6 not-prose">
+          <SealWatermark size={64} />
+        </div>
         <ul className="space-y-4 not-prose max-w-3xl">
           {featuredEvents.map((event) => (
             <li
