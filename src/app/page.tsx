@@ -1,5 +1,5 @@
 import HomeHero from '@/components/home/HomeHero';
-import { HomeConnectStrip, HomeEventsPreview, HomeLeaguesPreview } from '@/components/home/HomeSections';
+import { HomeCommunityStrip, HomeEventsPreview, HomeLeaguesPreview } from '@/components/home/HomeSections';
 
 export default function HomePage() {
   return (
@@ -7,7 +7,7 @@ export default function HomePage() {
       <HomeHero />
       <HomeLeaguesPreview />
       <HomeEventsPreview />
-      <HomeConnectStrip />
+      <HomeCommunityStrip />
     </>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import SiteShell from '@/components/layout/SiteShell';
 import { siteConfig } from '@/config/site';
-import { getAssetManifest } from '@/lib/getAssetManifest';
+import { sidebarLogoSrc } from '@/config/brandAssets';
 import './globals.css';
 
 const geistSans = Geist({
@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.urls.production),
+  icons: {
+    icon: '/image-assets/CurrentLogos/fsogg.png',
+  },
 };
 
 export default function RootLayout({
@@ -29,12 +32,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { logo } = getAssetManifest();
-
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SiteShell logoSrc={logo}>{children}</SiteShell>
+        <SiteShell logoSrc={sidebarLogoSrc}>{children}</SiteShell>
       </body>
     </html>
   );

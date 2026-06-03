@@ -73,15 +73,12 @@ export default function SidebarNav({ logoSrc, mobileOpen, onNavigate }: SidebarN
       }`}
       aria-label="Main navigation"
     >
-      <div className="p-5 border-b border-white/10">
-        <Link href="/" className="flex items-center gap-3 group" onClick={onNavigate}>
-          <BrandLogo src={logoSrc} />
-          <div>
-            <div className="text-lg font-bold tracking-wide text-white group-hover:text-[var(--fso-accent)] transition-colors">
-              {siteConfig.name}
-            </div>
-            <div className="text-xs text-white/70 italic">{siteConfig.tagline}</div>
-          </div>
+      <div className="p-4 border-b border-white/10">
+        <Link href="/" className="block group" onClick={onNavigate}>
+          <BrandLogo src={logoSrc} size={72} className="w-full max-w-[200px] h-auto object-contain mx-auto" />
+          <p className="text-center text-[10px] uppercase tracking-[0.25em] text-white/60 mt-2 group-hover:text-[var(--fso-accent)] transition-colors">
+            {siteConfig.tagline}
+          </p>
         </Link>
       </div>
 

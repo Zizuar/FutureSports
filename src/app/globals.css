@@ -71,3 +71,13 @@ body {
   line-height: 1.65;
   margin-bottom: 1rem;
 }
+
+.fso-card-accent {
+  box-shadow: inset 4px 0 0 var(--fso-maroon);
+}
+
+/* Main content pane — wireframe large display area */
+main .flex-1.overflow-auto {
+  background: radial-gradient(ellipse at 30% 0%, rgba(107, 26, 42, 0.15), transparent 50%),
+    var(--fso-charcoal-deep);
+}

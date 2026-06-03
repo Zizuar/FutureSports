@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import PlaceholderMediaPage from '@/components/content/PlaceholderMediaPage';
+import { brandAssets } from '@/config/brandAssets';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export default function YouTubePage() {
   return (
     <PlaceholderMediaPage
       title="YouTube — @fsonetwork"
+      bannerSrc={brandAssets.legacy.fsogg1}
       summary="Channel banner, playlist picker, and featured videos (adapt tlm-app YouTube page layout)."
       externalUrl={siteConfig.urls.youtube}
       externalLabel="FSO Network on YouTube"
