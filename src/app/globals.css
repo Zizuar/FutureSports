@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+:root {
+  --fso-maroon: #6b1a2a;
+  --fso-maroon-dark: #4a1018;
+  --fso-charcoal: #2a2a2e;
+  --fso-charcoal-deep: #141416;
+  --fso-accent: #c9a227;
+  --fso-text: #e8e6e3;
+  --fso-text-muted: #a8a6a3;
+  --sidebar-width: 260px;
+}
+
+@theme inline {
+  --color-fso-maroon: var(--fso-maroon);
+  --color-fso-charcoal: var(--fso-charcoal);
+  --color-fso-accent: var(--fso-accent);
+  --font-sans: var(--font-geist-sans);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--fso-charcoal-deep);
+  color: var(--fso-text);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Diagonal split used in sidebar and header */
+.fso-diagonal-split {
+  background: linear-gradient(
+    135deg,
+    var(--fso-maroon) 0%,
+    var(--fso-maroon) 48%,
+    var(--fso-charcoal) 52%,
+    var(--fso-charcoal) 100%
+  );
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.news-ticker-track {
+  animation: ticker-scroll 45s linear infinite;
+}
+
+.news-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.prose-fso h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--fso-accent);
+}
+
+.prose-fso p {
+  color: var(--fso-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
